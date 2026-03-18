@@ -1,5 +1,6 @@
 import readline from "readline";
 import { MESSAGES, COMMANDS } from "./constants.js";
+import { parseArgs } from "./utils/argParser.js";
 
 export function startRepl(state) {
   const rl = readline.createInterface({
@@ -19,6 +20,11 @@ export function startRepl(state) {
     }
 
     try {
+      const { command, args } = parseArgs(input);
+
+      console.log("Command:", command);
+      console.log("Args:", args);
+
       console.log(MESSAGES.location(state.currentDir));
     } catch {
       console.warn(MESSAGES.INVALID_INPUT);

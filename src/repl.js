@@ -2,6 +2,7 @@ import readline from "readline";
 import { MESSAGES, COMMANDS } from "./constants.js";
 import { parseArgs } from "./utils/argParser.js";
 import { up, cd, ls } from "./navigation.js";
+import { csvToJson } from "./commands/csvToJson.js";
 
 export function startRepl(state) {
   const rl = readline.createInterface({
@@ -16,7 +17,7 @@ export function startRepl(state) {
     const input = line.trim();
 
     try {
-      const { command, pathArg } = parseArgs(input);
+      const { command, args, pathArg } = parseArgs(input);
 
       switch (command) {
         case COMMANDS.UP: 
@@ -27,6 +28,9 @@ export function startRepl(state) {
           break;
         case COMMANDS.LS: 
           await ls(state);
+          break;
+        case COMMANDS.CSV_TO_JSON: 
+          await csvToJson(state.currentDir, args);
           break;
         case COMMANDS.EXIT: 
           rl.close();

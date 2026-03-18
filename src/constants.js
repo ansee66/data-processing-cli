@@ -13,4 +13,5 @@ export const COMMANDS = {
   UP: "up",
   CD: "cd",
   LS: "ls",
+  CSV_TO_JSON: "csv-to-json",
 }

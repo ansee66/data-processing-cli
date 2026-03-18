@@ -61,4 +61,6 @@ export async function ls(state) {
 
   folders.forEach(folder => {console.log(`${folder} [folder]`);});
   files.forEach(file => {console.log(`${file} [file]`);});
+
+  console.log(MESSAGES.location(state.currentDir));
 }

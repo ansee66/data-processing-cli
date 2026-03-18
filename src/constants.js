@@ -3,6 +3,7 @@ export const MESSAGES = {
   GOODBYE: "Thank you for using Data Processing CLI!",
   INVALID_INPUT: "Invalid input",
   OPERATION_FAILED: "Operation failed",
+  PATH_ERROR: "Path is required",
 
   location: (dir) => `You are currently in ${dir}`,
 };

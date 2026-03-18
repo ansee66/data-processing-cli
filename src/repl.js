@@ -1,6 +1,7 @@
 import readline from "readline";
 import { MESSAGES, COMMANDS } from "./constants.js";
 import { parseArgs } from "./utils/argParser.js";
+import { up, cd, ls } from "./navigation.js";
 
 export function startRepl(state) {
   const rl = readline.createInterface({
@@ -14,18 +15,25 @@ export function startRepl(state) {
   rl.on("line", async (line) => {
     const input = line.trim();
 
-    if (input === COMMANDS.EXIT) {
-      rl.close();
-      return;
-    }
-
     try {
-      const { command, args } = parseArgs(input);
+      const { command, pathArg } = parseArgs(input);
 
-      console.log("Command:", command);
-      console.log("Args:", args);
-
-      console.log(MESSAGES.location(state.currentDir));
+      switch (command) {
+        case COMMANDS.UP: 
+          up(state);
+          break;
+        case COMMANDS.CD: 
+          await cd(state, pathArg);
+          break;
+        case COMMANDS.LS: 
+          await ls(state);
+          break;
+        case COMMANDS.EXIT: 
+          rl.close();
+          break;
+        default:
+          console.warn(MESSAGES.INVALID_INPUT);
+      }
     } catch {
       console.warn(MESSAGES.INVALID_INPUT);
     }

@@ -1,0 +1,1 @@
+export const sortAlphabetically = (a, b) => a.localeCompare(b, undefined, { sensitivity: "base" });

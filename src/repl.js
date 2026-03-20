@@ -5,6 +5,7 @@ import { up, cd, ls } from "./navigation.js";
 import { csvToJson } from "./commands/csvToJson.js";
 import { jsonToCsv } from "./commands/jsonToCsv.js";
 import { count } from "./commands/count.js";
+import { hash } from "./commands/hash.js";
 
 export function startRepl(state) {
   const rl = readline.createInterface({
@@ -19,7 +20,7 @@ export function startRepl(state) {
     const input = line.trim();
 
     try {
-      const { command, args, pathArg } = parseArgs(input);
+      const { command, args, flags, pathArg } = parseArgs(input);
 
       switch (command) {
         case COMMANDS.UP: 
@@ -39,6 +40,9 @@ export function startRepl(state) {
           break;
         case COMMANDS.COUNT: 
           await count(state.currentDir, args);
+          break;
+        case COMMANDS.HASH: 
+          await hash(state.currentDir, args, flags);
           break;
         case COMMANDS.EXIT: 
           rl.close();

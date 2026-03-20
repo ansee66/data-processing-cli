@@ -16,4 +16,5 @@ export const COMMANDS = {
   CSV_TO_JSON: "csv-to-json",
   JSON_TO_CSV: "json-to-csv",
   COUNT: "count",
+  HASH: "hash",
 }

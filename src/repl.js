@@ -3,6 +3,7 @@ import { MESSAGES, COMMANDS } from "./constants.js";
 import { parseArgs } from "./utils/argParser.js";
 import { up, cd, ls } from "./navigation.js";
 import { csvToJson } from "./commands/csvToJson.js";
+import { jsonToCsv } from "./commands/jsonToCsv.js";
 
 export function startRepl(state) {
   const rl = readline.createInterface({
@@ -31,6 +32,9 @@ export function startRepl(state) {
           break;
         case COMMANDS.CSV_TO_JSON: 
           await csvToJson(state.currentDir, args);
+          break;
+        case COMMANDS.JSON_TO_CSV: 
+          await jsonToCsv(state.currentDir, args);
           break;
         case COMMANDS.EXIT: 
           rl.close();

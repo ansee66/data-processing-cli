@@ -2,10 +2,7 @@ import { createReadStream, createWriteStream } from "node:fs";
 import { createHash } from "node:crypto";
 import { resolvePath } from "../utils/pathResolver.js";
 import { checkIsFileExist } from "../utils/helpers.js";
-import { MESSAGES } from "../constants.js";
-
-const DEFAULT_ALGORITHM = "sha256";
-const AVAILABLE_ALGORITHMS = [DEFAULT_ALGORITHM, "md5", "sha512"];
+import { MESSAGES, DEFAULT_ALGORITHM, AVAILABLE_ALGORITHMS } from "../constants.js";
 
 export async function hash(currentDir, args, flags) {
   const inputPath = args.input;

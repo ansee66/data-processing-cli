@@ -6,6 +6,7 @@ import { csvToJson } from "./commands/csvToJson.js";
 import { jsonToCsv } from "./commands/jsonToCsv.js";
 import { count } from "./commands/count.js";
 import { hash } from "./commands/hash.js";
+import { hashCompare } from "./commands/hashCompare.js";
 
 export function startRepl(state) {
   const rl = readline.createInterface({
@@ -43,6 +44,9 @@ export function startRepl(state) {
           break;
         case COMMANDS.HASH: 
           await hash(state.currentDir, args, flags);
+          break;
+        case COMMANDS.HASH_COMPARE: 
+          await hashCompare(state.currentDir, args);
           break;
         case COMMANDS.EXIT: 
           rl.close();

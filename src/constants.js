@@ -17,4 +17,8 @@ export const COMMANDS = {
   JSON_TO_CSV: "json-to-csv",
   COUNT: "count",
   HASH: "hash",
+  HASH_COMPARE: "hash-compare",
 }
+
+export const DEFAULT_ALGORITHM = "sha256";
+export const AVAILABLE_ALGORITHMS = [DEFAULT_ALGORITHM, "md5", "sha512"];

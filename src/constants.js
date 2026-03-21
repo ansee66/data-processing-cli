@@ -18,6 +18,8 @@ export const COMMANDS = {
   COUNT: "count",
   HASH: "hash",
   HASH_COMPARE: "hash-compare",
+  ENCRYPT: "encrypt",
+  DECRYPT: "decrypt",
 }
 
 export const DEFAULT_ALGORITHM = "sha256";
